@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-
-    public float xValue = 0f;
-    public float yValue = 0.01f;
-    public float zValue = 0f;
+    public float moveSpeed = 1f;
 
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(xValue, yValue, zValue);
+        float xValue = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        float zValue = Input.GetAxis("Vertical") *moveSpeed * Time.deltaTime;
+
+        transform.Translate(xValue, 0, zValue);
     }
 }
